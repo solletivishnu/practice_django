@@ -25,7 +25,7 @@ services:
       DB_PASSWORD: vishnu1234
       DB_HOST: db
       DB_PORT: 5432
-      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,35.174.138.112
 
 volumes:
   postgres_data:
