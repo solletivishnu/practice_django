@@ -11,12 +11,12 @@ services:
 
   web:
     build: .
-    command: sh -c "./wait-for-it.sh db:5432 -- python manage.py migrate && python manage.py runserver 0.0.0.0:4000"
+    command: sh -c "./wait-for-it.sh db:5432 -- python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
       - static_volume:/app/staticfiles
     ports:
-      - "4000:4000"
+      - "8000:8000"
     depends_on:
       - db
     environment:

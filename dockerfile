@@ -16,4 +16,4 @@ COPY . .
 
 RUN python manage.py collectstatic --noinput
 
-CMD ["gunicorn", "todo_project.wsgi:application", "--bind", "0.0.0.0:4000"]
+CMD ["gunicorn", "todo_project.wsgi:application", "--bind", "0.0.0.0:8000"]
