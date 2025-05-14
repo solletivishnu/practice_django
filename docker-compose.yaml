@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: todo_db_01
+      POSTGRES_USER: todo_user_01
+      POSTGRES_PASSWORD: vishnu1234
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: sh -c "./wait-for-it.sh db:5432 -- python manage.py migrate && python manage.py runserver 0.0.0.0:4000"
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    environment:
+      DB_NAME: todo_db_01
+      DB_USER: todo_user_01
+      DB_PASSWORD: vishnu1234
+      DB_HOST: db
+      DB_PORT: 5432
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1
+
+volumes:
+  postgres_data:
+  static_volume:
