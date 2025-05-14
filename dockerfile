@@ -8,7 +8,7 @@ WORKDIR /app
 
 COPY requirements.txt .
 COPY wait-for-it.sh .
-
+RUN chmod +x wait-for-it.sh
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 
